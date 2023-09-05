@@ -4,14 +4,19 @@ No final escreva o nome da pessoa e seu hobbies no seguinte formato: Nome | Hobb
 import PromptSync from "prompt-sync"
 const prompt = PromptSync()
 
-let nome = ''
-while((nome = prompt("Digite seu nome: ")) == '') {
-    console.log("\nNão é possível nome vazio!")
+let nome, controlNome, txtNome = "Digite seu nome: "
+
+while((controlNome = prompt(txtNome)) != '') {
+    nome = controlNome.toLowerCase()
+    nome = nome.charAt(0).toUpperCase() + nome.slice(1) // Transforma a primeira letra em maiuscula
+    txtNome = "Tecle Enter para confirmar ou digite novamente seu nome: "
 }
 
-let hobbies = [], hobby
-while((hobby = prompt("Digite um hobbie: ")) != '') {
+console.log() //Dando espaço entre nome e hobbie
+let hobby, hobbies = [], txtHobby = "Digite um hobbie: "
+while((hobby = prompt(txtHobby)) != '') {
     hobbies.push(hobby)
+    txtHobby = "Digite outro hobbie ou tecle Enter para terminar: "
 }
 
 console.log(`\n${nome} | ${(() => {
